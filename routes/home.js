@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("index", { title: "Vidly", message: "Welcome to Vidly API" });
+  res.sendFile("../views/index.html");
 });
 
 module.exports = router;
