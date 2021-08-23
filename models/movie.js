@@ -31,5 +31,5 @@ const validateMovie = (movie) => {
 };
 
 exports.Movie = Movie;
-exports.validate = validateMovie;
+exports.validateMovies = validateMovie;
 exports.movieSchema = movieSchema;

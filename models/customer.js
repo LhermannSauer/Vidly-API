@@ -22,5 +22,5 @@ const validateCustomer = (customer) => {
 };
 
 exports.Customer = Customer;
-exports.validate = validateCustomer;
+exports.validateCustomer = validateCustomer;
 exports.customerSchema = customerSchema;

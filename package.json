@@ -4,13 +4,18 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll --maxWorkers=1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "14.17.3"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
     "config": "^3.3.6",
     "debug": "^4.3.2",
     "express": "^4.17.1",
@@ -30,6 +35,9 @@
     "winston-mongodb": "^5.0.7"
   },
   "devDependencies": {
-    "jshint": "^2.13.1"
+    "jest": "^27.0.6",
+    "jshint": "^2.13.1",
+    "moment": "^2.29.1",
+    "supertest": "^6.1.6"
   }
 }
