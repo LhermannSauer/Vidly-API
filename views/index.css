@@ -1,0 +1,12 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #ddddef;
+}
+#titleContainer {
+  margin-top: 155;
+}
+#text {
+  padding-right: 15%;
+  padding-left: 5%;
+}
