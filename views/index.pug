@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+    link(rel="stylesheet" href="index.css")
+    title Vidly API
+  
+  body
+    div.container.text-center
+      h1.text-info Vidly API
+      h3 Welcome to the online API for the Vidly Application
+      br
+      br
+      br
+    
+
+    div.container
+      div.row
+        div.col-sm-10
+          p.text-justify This is a project done as part of the Node JS course by CodeWithMosh. 
+            |It serves as a backend using mongoDB for a react project called Vidly, which will be also uploaded shortly.
+            br 
+            br
+            | The course comprehensively teaches you how to write a clean and
+            |consisten node application, covering from the basics concepts such
+            |as the module system, the Node Package Manager, Express,
+            |Asynchronous JS, CRUD operations using Mongoose; up to advanced
+            |topics such as authorization and authentication, unit and
+            |integration testing, Test-Driven-Development, and deployment.
+        div.col-sm-2
+          div.list-group
+            a.list-group-item.text-center(href='./api/genres') Genres
+            a.list-group-item.text-center(href='./api/customers') Customers
+            a.list-group-item.text-center(href='./api/movies') Movies
+            a.list-group-item.text-center(href='./api/rentals') Rentals
+            a.list-group-item.text-center(href='./api/returns') Returns

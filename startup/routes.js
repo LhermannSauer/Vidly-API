@@ -12,7 +12,8 @@ const error = require("../middleware/error");
 
 module.exports = function (app) {
   app.use(express.json());
-  app.use(helmet());
+
+  app.set("view engine", "pug");
 
   app.use("/api/genres", genres);
   app.use("/api/customers", customers);
@@ -21,7 +22,6 @@ module.exports = function (app) {
   app.use("/api/users", users);
   app.use("/api/auth", auth);
   app.use("/api/returns", returns);
-
   app.use("/", home);
 
   app.use(error);
