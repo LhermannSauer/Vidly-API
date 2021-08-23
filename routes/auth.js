@@ -7,16 +7,17 @@ const express = require("express");
 const validate = require("../middleware/validate");
 const router = express.Router();
 
-function validateAuth(req) {
+const validateAuth = (req) => {
   const schema = {
-    email: Joi.string().min(5).max(255).required().email(),
+    email: Joi.email().min(5).max(255).required(),
     password: Joi.string().min(5).max(255).required(),
   };
-
-  return Joi.validate(req, schema);
-}
+  console.log("validateAuth");
+  return schema.validate(req);
+};
 
 router.post("/", validate(validateAuth), async (req, res) => {
+  console.log("AUTH TRIGGERED");
   let user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(400).send("Invalid email or password.");
 
