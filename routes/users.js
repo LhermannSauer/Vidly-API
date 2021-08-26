@@ -14,6 +14,7 @@ router.get("/me", [auth, validate(validateUser)], async (req, res) => {
   res.send(user);
 });
 
+// Register user
 router.post("/", validate(validateUser), async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (user) return res.status(400).send("User already registered.");
