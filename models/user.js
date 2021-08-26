@@ -24,8 +24,11 @@ const validateUser = (user) => {
   const schema = Joi.object({
     name: Joi.string().required().min(5).max(50),
     password: Joi.string().min(5).max(255).required(),
+    repeatPassword: Joi.ref("password"),
+
     email: Joi.string().email().max(255).required(),
   });
+
   return schema.validate(user);
 };
 

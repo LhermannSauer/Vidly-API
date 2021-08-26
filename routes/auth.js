@@ -8,11 +8,10 @@ const validate = require("../middleware/validate");
 const router = express.Router();
 
 const validateAuth = (req) => {
-  const schema = {
-    email: Joi.email().min(5).max(255).required(),
+  const schema = Joi.object({
+    email: Joi.string().email().min(5).max(255).required(),
     password: Joi.string().min(5).max(255).required(),
-  };
-  console.log("validateAuth");
+  });
   return schema.validate(req);
 };
 
