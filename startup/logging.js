@@ -2,6 +2,10 @@ const winston = require("winston");
 require("winston-mongodb");
 require("express-async-errors");
 
+/**
+ * Connect the app to the loggin services, both with a logfile and to the db.
+ * Also sets some formatting configurations.
+ */
 module.exports = function () {
   winston.add(new winston.transports.File({ filename: "logfile.log" }));
   winston.add(

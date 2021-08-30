@@ -6,15 +6,22 @@ const router = express.Router();
 const validate = require("../middleware/validate");
 const cors = require("../middleware/cors");
 
+// api/movies
+
 router.get("/", cors, async (req, res) => {
+  // get movies from db adn returned sorted by name
+
   const movies = await Movie.find().sort("name");
   res.send(movies);
 });
 
+// post movie validated through middleware
 router.post("/", [validate(validateMovies)], async (req, res) => {
+  //get the genre for the movie (body should includ only ID)
   const genre = await Genre.findById(req.body.genreId);
   if (!genre) return res.status(400).send("Invalid genre.");
 
+  // create an object and take itesm from both req.body and genre
   const movie = new Movie({
     title: req.body.title,
     genre: {
@@ -29,6 +36,7 @@ router.post("/", [validate(validateMovies)], async (req, res) => {
   res.send(movie);
 });
 
+// PUT to /api/movies
 router.put("/:id", [validate(validateMovies)], async (req, res) => {
   const genre = await Genre.findById(req.body.genreId);
   if (!genre) return res.status(400).send("Invalid genre.");
@@ -53,6 +61,7 @@ router.put("/:id", [validate(validateMovies)], async (req, res) => {
   res.send(movie);
 });
 
+// DELETE api/movies/id
 router.delete("/:id", async (req, res) => {
   const movie = await Movie.findByIdAndRemove(req.params.id);
 

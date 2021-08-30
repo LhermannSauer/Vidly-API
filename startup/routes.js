@@ -1,5 +1,4 @@
 const express = require("express");
-const helmet = require("helmet");
 const genres = require("../routes/genres");
 const movies = require("../routes/movies");
 const rentals = require("../routes/rentals");
@@ -10,10 +9,12 @@ const customers = require("../routes/customers");
 const home = require("../routes/home");
 const error = require("../middleware/error");
 
+/**
+ * Load the routes of the application
+ * @param {any} app The express app
+ */
 module.exports = function (app) {
   app.use(express.json());
-
-  app.set("view engine", "pug");
 
   app.use("/api/genres", genres);
   app.use("/api/customers", customers);

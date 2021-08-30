@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 
+// import genre schema for reference
 const { genreSchema } = require("./genre");
 
+// create schema for the DB
 const movieSchema = new mongoose.Schema([
   {
     title: {
@@ -20,6 +22,11 @@ const movieSchema = new mongoose.Schema([
 
 const Movie = mongoose.model("Movie", movieSchema);
 
+/**
+ * Validate with Joi a movie object
+ * @param {object} movie a Movei object, require title, genreId, numberinStock and daily rental rate
+ * @returns {boolean}
+ */
 const validateMovie = (movie) => {
   const schema = Joi.object({
     title: Joi.string().min(5).required(),

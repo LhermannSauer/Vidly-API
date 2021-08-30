@@ -8,18 +8,24 @@ const router = express.Router();
 const validate = require("../middleware/validate");
 const cors = require("../middleware/cors");
 
+// GET /api/genres
+// get list of genre objects
 router.get("/", async (req, res) => {
   const genres = await Genre.find().sort("name");
   res.send(genres);
 });
 
-router.post("/", [auth, validate(validateGenre)], async (req, res) => {
+// POST /api/genres
+// post a new genre, user need to be logged in and be admin
+router.post("/", [auth, admin, validate(validateGenre)], async (req, res) => {
   let genre = new Genre({ name: req.body.name });
   genre = await genre.save();
 
   res.send(genre);
 });
 
+// PUT /api/genre/id
+// Update the name of the genre, return 404 if not found
 router.put(
   "/:id",
   [auth, validate(validateGenre), validateObjectId, cors],
@@ -39,6 +45,7 @@ router.put(
   }
 );
 
+// DELETE /api/genres/id
 router.delete("/:id", [auth, admin, validateObjectId], async (req, res) => {
   const genre = await Genre.findByIdAndRemove(req.params.id);
 
